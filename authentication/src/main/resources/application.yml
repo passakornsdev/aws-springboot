@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: authentication
+  docker:
+    compose:
+      enabled: true
+      file: ../compose.yaml
+  data:
+    mongodb:
+      database: aws-mongodb
+server:
+  port: 8090
+
+security:
+  ignored: /**

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: user-management
+  docker:
+    compose:
+      enabled: true
+      file: ../compose.yaml
+  data:
+    mongodb:
+      database: aws-mongodb
+server:
+  port: 8089
