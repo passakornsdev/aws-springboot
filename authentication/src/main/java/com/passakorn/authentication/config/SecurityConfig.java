@@ -29,12 +29,6 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/api/login/**")).permitAll()
                         .anyRequest().authenticated()
                 )
-                .exceptionHandling((customizer) -> {
-                    customizer.authenticationEntryPoint((request, response, accessDeniedException) -> {
-                        response.setStatus(401);
-                        response.getWriter().println("Please login");
-                    });
-                })
                 .build();
     }
 }

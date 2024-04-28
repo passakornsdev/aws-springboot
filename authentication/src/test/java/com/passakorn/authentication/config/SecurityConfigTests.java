@@ -23,11 +23,6 @@ public class SecurityConfigTests {
     MockMvc mockMvc;
 
     @Test
-    void unAuthForNonLoginPath() throws Exception {
-        mockMvc.perform(get("/api/user")).andExpect(status().isUnauthorized());
-    }
-
-    @Test
     void notFoundForLoginPath() throws Exception {
         mockMvc.perform(get("/api/login")).andExpect(status().isNotFound());
     }

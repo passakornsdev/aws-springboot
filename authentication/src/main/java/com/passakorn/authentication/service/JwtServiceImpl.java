@@ -57,7 +57,7 @@ public class JwtServiceImpl implements JwtService {
     }
 
 
-    public String GenerateToken(String username) {
+    public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, username);
     }

@@ -32,9 +32,10 @@ public class LoginServiceImpl implements LoginService {
         if (!this.passwordEncoder.matches(loginRequest.getPassword(), userModel.getPassword())) {
             throw new UsernameNotFoundException(this.LOGIN_FAILED_MESSAGE);
         }
+        userModel.getPassword();
 
         return LoginResponse.builder()
-                .token(jwtService.GenerateToken(loginRequest.getUsername()))
+                .token(jwtService.generateToken(loginRequest.getUsername()))
                 .build();
     }
 }

@@ -71,7 +71,7 @@ public class LoginServiceTests {
         String token = "asdasdasdasdasdasdas";
         when(userRepository.findByUsername(matches(username))).thenReturn(Optional.of(userModel));
         when(passwordEncoder.matches(matches(password), matches(password))).thenReturn(true);
-        when(jwtService.GenerateToken(matches(username))).thenReturn(token);
+        when(jwtService.generateToken(matches(username))).thenReturn(token);
 
         // then
         assertEquals(token, loginService.login(LoginRequest.builder().username(username).password(password).build()).getToken());
