@@ -8,5 +8,11 @@ spring:
   data:
     mongodb:
       database: aws-mongodb
+      auto-index-creation: true
 server:
   port: 8089
+
+app:
+  authentication:
+    secret: wCTLDLCtGQubfHuka4458ER6P9Jqudfh9jwTXkI5CLWGkLxnew
+    ttl: 3600

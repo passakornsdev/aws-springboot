@@ -4,10 +4,11 @@ import com.passakorn.usermanagement.model.UserModel;
 import com.passakorn.usermanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private UserRepository userRepository;
@@ -17,9 +18,9 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/{username}")
-    public UserModel getUserById(@PathVariable String username) {
-        return this.userRepository.findByUsername(username).orElse(null);
+    @GetMapping
+    public Object getUser() {
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
     @PostMapping
