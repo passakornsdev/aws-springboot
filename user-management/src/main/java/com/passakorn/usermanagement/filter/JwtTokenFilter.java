@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -19,8 +20,8 @@ import java.util.Optional;
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-    private JwtService jwtService;
-    private UserRepository userRepository;
+    private final JwtService jwtService;
+    private final UserRepository userRepository;
 
     public JwtTokenFilter(JwtService jwtService, UserRepository userRepository) {
         this.jwtService = jwtService;
@@ -39,10 +40,15 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             Optional<UserModel> userOpt = this.userRepository.findByUsername(username);
-            if (userOpt.isPresent() && jwtService.validateToken(token, userOpt.get())) {
+            if (userOpt.isPresent()) {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userOpt.get(), null, userOpt.get().getAuthorities());
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            }
+        } else if (username != null && SecurityContextHolder.getContext().getAuthentication() != null) {
+            UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+            if (!jwtService.validateToken(token, (UserDetails) authentication.getPrincipal())) {
+                SecurityContextHolder.getContext().setAuthentication(null);
             }
         }
 
