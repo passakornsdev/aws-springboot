@@ -1,4 +1,5 @@
-{
+[
+  {
     "_id": {
       "$oid": "6627d545d4ba023ac995aad3"
     },
@@ -11,4 +12,18 @@
       "ADMIN",
       "USER"
     ]
+  },
+  {
+    "_id": {
+      "$oid": "662f7bb44c1b62cd253a2c78"
+    },
+    "username": "user",
+    "password": "$2a$10$pT222olJFrgEHogUub9nWuWDpsCy9pE.ebA/gb2Yx0Gc5W3gyWqhu",
+    "firstName": "John",
+    "lastName": "Doe",
+    "_class": "com.passakorn.usermanagement.model.UserModel",
+    "roleList": [
+      "USER"
+    ]
   }
+]
