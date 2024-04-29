@@ -10,3 +10,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: awsmongodb
+  migration:
+    build: .
+    image: mongo
+    command: > 
+      sh -c "mongoimport -u root -p awsmongodb --db=aws-mongodb --collection=user --authenticationDatabase admin mongodb://aws-mongodb:27017 /mongodb-dumb/init-users.json
+      && mongoimport -u root -p awsmongodb --db=aws-mongodb --collection=product --authenticationDatabase admin --jsonArray mongodb://aws-mongodb:27017 /mongodb-dumb/init-products.json"
+    volumes:
+      - ./mongodb-dumb:/mongodb-dumb
+    links:
+      - aws-mongodb
+    depends_on:
+      - aws-mongodb

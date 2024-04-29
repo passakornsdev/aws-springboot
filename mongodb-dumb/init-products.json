@@ -1,0 +1,17 @@
+[
+    {
+        "_id": {
+            "$oid": "662f79a12a16dc14ffc08425"
+          },
+          "productName": "Macbook Air M3",
+          "imageUrl": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mba13-midnight-select-202402?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1708367688034"
+    },
+
+    {
+        "_id": {
+            "$oid": "662f7999fd07f03aefc8a3e6"
+          },
+          "productName": "Macbook Pro M3",
+          "imageUrl": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-m3-max-pro-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830118"
+    }
+]
