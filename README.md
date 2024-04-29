@@ -7,6 +7,7 @@ Springboot services integrate with AWS services
 
 - Docker - [Install Docker](https://docs.docker.com/engine/install/)
 
+-----
 
 ### Run apps for Development
 
@@ -24,9 +25,13 @@ Following steps below examine how to start application with IntelliJ
 
 Happy coding!
 
+-----
+
 ### Add external services for your application
 Like MongoDB, you can add any services on your local development
 Simply by defining services in compose.yaml - [Docker Compose](https://docs.docker.com/compose/gettingstarted/#step-2-define-services-in-a-compose-file)
+
+-----
 
 ### MongoDB initial Data
 
@@ -36,5 +41,4 @@ Simply by defining services in compose.yaml - [Docker Compose](https://docs.dock
 
 - Add mongoimport command with correct database, collection and file path in compose.yaml
 
-
-ฺ Beware of the import command, it will fail after it is successfully executed once because duplicated OID, but new item with new OID will pass
+##### Heads up for the import command, it will fail after it is successfully executed once because duplicated OID, but new item with new OID will pass
