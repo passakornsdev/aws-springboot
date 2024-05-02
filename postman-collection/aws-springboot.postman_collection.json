@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "61582e5c-6407-40cd-85d2-8cbc5f85a050",
+		"name": "aws-springboot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4081542"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sale-product",
+			"item": [
+				{
+					"name": "GetById",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({",
+									"    url: `${pm.environment.get(\"AUTH_ENDPOINT\")}/api/login`,",
+									"    method: 'POST',",
+									"    mode: 'raw',",
+									"    header: { 'content-type': 'application/json' },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({",
+									"            username: `${pm.environment.get(\"USERNAME\")}`, ",
+									"            password: `${pm.environment.get('PASSWORD')}`",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    if (err) {",
+									"        console.log(err);",
+									"    }",
+									"    pm.environment.set(\"TOKEN\", res.json().token);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/product/662f7999fd07f03aefc8a3e6",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"sale-product",
+								"662f7999fd07f03aefc8a3e6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
