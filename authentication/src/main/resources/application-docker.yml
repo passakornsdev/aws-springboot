@@ -1,0 +1,13 @@
+spring:
+  profile: docker
+  docker:
+    compose:
+      enabled: false
+  data:
+    mongodb:
+      database: aws-mongodb
+      host: aws-mongodb
+      authentication-database: admin
+      port: 27017
+      username: root
+      password: awsmongodb

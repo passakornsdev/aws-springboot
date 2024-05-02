@@ -1,0 +1,11 @@
+include:
+  - compose.yaml
+
+services:
+  authentication:
+    build: ./authentication
+    restart: always
+    ports:
+      - "8090:8090"
+    depends_on:
+      - aws-mongodb

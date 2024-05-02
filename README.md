@@ -27,6 +27,16 @@ Happy coding!
 
 -----
 
+### Postman collection
+
+- in order to access authenticated APIs (like product service), start authentication service and call any request
+
+- normally when you start non-auth components, they use "compose-with-auth.yaml" which contains authencation service for you so you dont need to start authentication service everytime
+
+- All requests should come with pre-request authentication script
+
+-----
+
 ### Add external services for your application
 Like MongoDB, you can add any services on your local development
 Simply by defining services in compose.yaml - [Docker Compose](https://docs.docker.com/compose/gettingstarted/#step-2-define-services-in-a-compose-file)

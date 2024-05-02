@@ -4,7 +4,10 @@ spring:
   docker:
     compose:
       enabled: true
-      file: ../compose.yaml
+      lifecycle-management: start-and-stop
+      file: ../compose-with-auth.yaml
+      stop:
+        command: stop
   data:
     mongodb:
       database: aws-mongodb

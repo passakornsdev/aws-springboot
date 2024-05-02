@@ -5,6 +5,9 @@ spring:
     compose:
       enabled: true
       file: ../compose.yaml
+      lifecycle-management: start-and-stop
+      stop:
+        command: stop
   data:
     mongodb:
       database: aws-mongodb
