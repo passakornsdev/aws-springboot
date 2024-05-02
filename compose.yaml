@@ -18,7 +18,7 @@ services:
       && mongoimport -u root -p awsmongodb --db=aws-mongodb --collection=product --authenticationDatabase admin --jsonArray mongodb://aws-mongodb:27017 /mongodb-dumb/init-products.json"
     volumes:
       - ./mongodb-dumb:/mongodb-dumb
-    links:
-      - aws-mongodb
     depends_on:
       - aws-mongodb
+    labels:
+      org.springframework.boot.ignore: true
