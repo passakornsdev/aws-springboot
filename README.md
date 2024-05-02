@@ -29,6 +29,12 @@ Happy coding!
 
 ### Postman collection
 
+- import collection and env in postman-collection
+
+- select env from post man file
+
+![postman-env.png](postman-env.png)
+
 - in order to access authenticated APIs (like product service), start authentication service and call any request
 
 - normally when you start non-auth components, they use "compose-with-auth.yaml" which contains authencation service for you so you dont need to start authentication service everytime
