@@ -24,6 +24,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
+                // TODO, cache user read query or try spring redis session
                 .sessionManagement((customizer) -> customizer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .addFilterBefore(this.jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> requests.anyRequest().authenticated())
